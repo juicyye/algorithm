@@ -1,6 +1,5 @@
-package chap_08;
+package chap_09;
 
-import java.util.Map;
 import java.util.Scanner;
 
 public class 바둑이승차_02 {
