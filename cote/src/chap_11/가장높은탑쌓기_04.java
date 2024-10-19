@@ -33,7 +33,7 @@ public class 가장높은탑쌓기_04 {
                 }
             }
             dy[i] = max_h + arr.get(i).h;
-            ansewr = Math.max(answer, dy[i]);
+            int ansewr = Math.max(answer, dy[i]);
 
         }
 
