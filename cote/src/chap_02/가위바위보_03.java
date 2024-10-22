@@ -3,18 +3,6 @@ package chap_02;
 import java.util.Scanner;
 
 public class 가위바위보_03 {
-    static String solution(int n, int[] a,int[] b) {
-        String answer = "";
-        for (int i = 0; i < n; i++) {
-            if(a[i] == b[i]) answer +="d";
-            else if(a[i]==1&b[i]==3) answer +="a";
-            else if(a[i]==2 &&b[i]==1)answer +="a";
-            else if(a[i]==3 &&b[i]==2)answer +="a";
-            else answer+="b";
-
-        }
-        return answer;
-    }
 
 
     public static void main(String[] args) {
@@ -28,7 +16,21 @@ public class 가위바위보_03 {
         for (int i = 0; i < n; i++) {
             b[i] = scanner.nextInt();
         }
-        System.out.println("solution(n,arr) = " + solution(n, a,b));
+
+        for (int i = 0; i < n; i++) {
+            int A = a[i];
+            int B = b[i];
+
+            if (A == B) {
+                System.out.println("D"); // 비김
+            } else if ((A == 1 && B == 3) || (A == 2 && B == 1) || (A == 3 && B == 2) ) {
+                System.out.println("A"); // A가 이김
+            } else {
+                System.out.println("B"); // B가 이김
+            }
+        }
+
+        scanner.close();
 
 
 

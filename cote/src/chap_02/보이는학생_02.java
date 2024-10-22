@@ -1,20 +1,8 @@
 package chap_02;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class 보이는학생_02 {
-    static int solution(int n, int[] arr) {
-        int answer = 1;
-        int max = arr[0];
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] > max) {
-                answer++;
-                max = arr[i];
-            }
-        }
-        return answer;
-    }
 
 
     public static void main(String[] args) {
@@ -24,7 +12,17 @@ public class 보이는학생_02 {
         for (int i = 0; i < n; i++) {
             arr[i] = scanner.nextInt();
         }
-        System.out.println("solution(n,arr) = " + solution(n, arr));
+
+        int max = 0;
+        int count = 0;
+
+        for (int i = 0; i < n; i++) {
+            if(arr[i] > max) {
+                max = arr[i];
+                count++;
+            }
+        }
+        System.out.println(count);
 
 
 
