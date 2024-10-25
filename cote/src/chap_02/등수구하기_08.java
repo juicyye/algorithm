@@ -1,29 +1,34 @@
 package chap_02;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class 등수구하기_08 {
-    static int[] solution(int n, int[] arr) {
-        int[] answer = new int[n];
-        for (int i = 0; i < n; i++) {
-            int cnt = 1;
-            for (int j = 0; j < n; j++) {
-                if(arr[j] > arr[i]) cnt++;
-            }
-            answer[i] = cnt;
-        }
-        return answer;
 
-    }
 
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
-        int[] arr =new int[n];
+        List<Integer> arr = new ArrayList<>();
         for (int i = 0; i < n; i++) {
-            arr[i] = scanner.nextInt();
+            arr.add(scanner.nextInt());
         }
-        for(int x : solution(n,arr)) System.out.println("x = " + x);
+
+        int[] answer = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            int rank = 1;
+            for (int j = 0; j < n; j++) {
+                if(arr.get(i) < arr.get(j)) {
+                    rank++;
+                }
+            }
+            answer[i] = rank;
+        }
+        for (int i : answer) {
+            System.out.print(i + " ");
+        }
     }
 }

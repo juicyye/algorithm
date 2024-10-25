@@ -3,25 +3,6 @@ package chap_02;
 import java.util.Scanner;
 
 public class 임시반장_11 {
-    static int solution(int n, int[][] arr) {
-        int answer = 0, max = Integer.MIN_VALUE;
-        for (int i = 1; i <= n; i++) {
-            int cnt = 0;
-            for (int j = i+1; j <= 5; j++) {
-                for (int k = 0; k <= n; k++) {
-                    if (arr[i][k] == arr[j][k]) {
-                        cnt++;
-                        break;
-                    }
-                }
-            }
-            if (cnt > max) {
-                max = cnt;
-                answer =i;
-            }
-        }
-        return answer;
-    }
 
 
     public static void main(String[] args) {
@@ -33,6 +14,25 @@ public class 임시반장_11 {
                 arr[i][j] = scanner.nextInt();
             }
         }
-        System.out.println("s = " + solution(n, arr));
+        int max = 0;
+        int answer = 0;
+
+        for (int i = 1; i <= n; i++) {
+            int count = 0;
+            for (int j = 1; j <= n; j++) {
+                for (int k = 1; k < 6; k++) {
+                    if(arr[i][k] == arr[j][k]) {
+                        count++;
+                        break;
+                    }
+                }
+            }
+            if(count > max) {
+                max = count;
+                answer = i;
+            }
+        }
+
+        System.out.println(answer);
     }
 }
