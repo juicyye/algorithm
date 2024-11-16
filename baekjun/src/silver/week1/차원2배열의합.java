@@ -1,4 +1,4 @@
-package silver;
+package silver.week1;
 
 import java.util.Scanner;
 

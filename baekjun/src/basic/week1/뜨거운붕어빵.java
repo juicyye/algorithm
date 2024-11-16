@@ -1,6 +1,5 @@
-package basic;
+package basic.week1;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class 뜨거운붕어빵 {
