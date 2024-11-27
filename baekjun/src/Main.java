@@ -1,42 +1,55 @@
-import java.util.*;
-import java.lang.*;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
-/*
-    N 장의 카드 중 3 장을 고르고, M 을 넘지 않으면서 M 과 최대한 가깝게 만들기
-    개수는 정해져있고 순서는 중요하지 않으니까 조합
-*/
+/**
+ * 1. 문자열은 bufferedReader를 써서 입력을 받자
+ * 2. 마지막에 대응되는 괄호가 나와야 되기 때문에 스택을 쓰자
+ * 3. 한 줄마다 테스트 케이스가 적용되기 때문에 bufferedReader로 판별
+ * 4. 온점(.)으로 끝나기 때문에 while문으로 반복문을 돌리자
+ */
 
 class Main {
-    static int N, M, cards[], result;
 
-    static void comb(int cnt, int start, int sum) {
-        if(sum > M) return;
-        if(cnt == 3) {
-            result = Math.max(result, sum);
-            return;
-        }
-        for(int i = start; i < N; i++) {
-            comb(cnt +1, i+1, sum + cards[i]);
-        }
-    }
-
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine());
+        StringBuilder sb = new StringBuilder();
 
-        N = Integer.parseInt(st.nextToken());
-        M = Integer.parseInt(st.nextToken());
+        while (true) {
+            String input = br.readLine();
+            if (input.equals(".")) break;
 
-        cards = new int[N];
-
-        st = new StringTokenizer(br.readLine());
-        for(int i = 0; i < N; i++) {
-            cards[i] = Integer.parseInt(st.nextToken());
+            if (isBalanced(input)) {
+                sb.append("yes");
+            } else {
+                sb.append("no");
+            }
+            sb.append("\n");
         }
-        result = 0;
-        comb(0, 0, 0);
-
-        System.out.println(result);
+        System.out.println(sb);
     }
+
+    private static boolean isBalanced(String input) {
+        Deque<Character> stack = new ArrayDeque<>();
+
+        char[] charArray = input.toCharArray();
+        for (char c : charArray) {
+            if (c == '(' || c == '[') {
+                stack.push(c);
+            } else if (c == ')') {
+                if (stack.isEmpty() || stack.pop() != '(') {
+                    return false;
+                }
+
+            } else if (c == ']') {
+                if(stack.isEmpty() || stack.pop() != '[') {
+                    return false;
+                }
+            }
+        }
+        return stack.isEmpty();
+    }
+
 }
