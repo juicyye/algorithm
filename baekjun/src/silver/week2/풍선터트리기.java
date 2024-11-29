@@ -36,7 +36,6 @@ public class 풍선터트리기 {
                     points.offerLast(points.poll());
                 }
             } else {
-
                 for (int i = 0; i < Math.abs(nextNumber); i++) {
                     points.offerFirst(points.pollLast());
                 }
