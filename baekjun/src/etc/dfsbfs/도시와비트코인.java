@@ -1,4 +1,4 @@
-package etc.bfs;
+package etc.dfsbfs;
 
 import java.util.LinkedList;
 import java.util.Queue;

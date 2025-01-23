@@ -18,7 +18,7 @@ public class BucketBrigade {
         for (int i = 0; i < 10; i++) {
             String input = br.readLine();
             for (int j = 0; j < 10; j++) {
-                board[i][j] = input.charAt(j);
+                board[i][j] = input.charAt(i);
                 if(board[i][j] == 'B') barn = new int[]{i,j};
                 if(board[i][j] == 'L') lake = new int[]{i,j};
             }
