@@ -1,6 +1,6 @@
 package silver.week3;
 
-import java.util.LinkedList;
+import java.util.ArrayDeque;
 import java.util.Queue;
 import java.util.Scanner;
 
@@ -32,7 +32,7 @@ public class 유기농배추 {
             for (int j = 0; j < n; j++) {
                 if (board[i][j] == 1) {
                     answer++;
-                    bfs(i,j);
+                    bfs(i, j);
                 }
             }
         }
@@ -40,7 +40,7 @@ public class 유기농배추 {
     }
 
     private static void bfs(int x, int y) {
-        Queue<int[]> queue = new LinkedList<>();
+        Queue<int[]> queue = new ArrayDeque<>();
         queue.offer(new int[]{x, y});
         board[x][y] = 0;
 
@@ -53,7 +53,7 @@ public class 유기농배추 {
                 int nx = dx + ints[1];
                 int ny = dy + ints[0];
 
-                if(nx >= 0 && nx < m && ny >= 0 && ny < n && board[nx][ny] == 1) {
+                if (nx >= 0 && nx < m && ny >= 0 && ny < n && board[nx][ny] == 1) {
                     queue.offer(new int[]{nx, ny});
                     board[nx][ny] = 0;
                 }
